@@ -83,8 +83,9 @@
 
 **演示截图:**
 
-![漂流瓶社交应用](screenshots/screenshot1.png)
-![漂流瓶拾取页面](screenshots/screenshot2.png)
+![漂流瓶首页](screenshots/project_index.jpg)
+![漂流瓶拾取页面1](screenshots/bottle_one.jpg)
+![漂流瓶拾取页面2](screenshots/bottle_two.jpg)
 
 ## 5. 数据库结构
 
