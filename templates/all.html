@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>漂流瓶社区</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #008CBA;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        li {
+            margin: 0 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #008CBA;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #005f7f;
+        }
+        p {
+            text-align: center;
+        }
+    </style>
+    <script>
+        // 一个简单的JavaScript示例，当用户点击链接时改变链接颜色
+        document.addEventListener('DOMContentLoaded', function() {
+            var links = document.querySelectorAll('a');
+            links.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    this.style.color = '#ff6600';
+                });
+                link.addEventListener('mouseout', function() {
+                    this.style.color = '#008CBA';
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>漂流瓶社区</h1>
+    <ul>
+        <li><a href="/view_found_bottle">查看拾取过的漂流瓶</a></li>
+        <li><a href="/user_profile">用户资料</a></li>
+        <li><a href="/upload_avatar">上传头像</a></li>
+        <li><a href="/submit_bottle">在漂流瓶里提交信息</a></li>
+        <li><a href="/view_bottle">查看我扔过的漂流瓶</a></li>
+        <li><a href="/login">用户登录</a></li>
+        <li><a href="/register">用户注册</a></li>
+    </ul>
+    <p>在这里您可以访问漂流瓶社区的各项功能。</p>
+</body>
+</html>

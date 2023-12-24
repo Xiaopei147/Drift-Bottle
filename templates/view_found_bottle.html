@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拾取到的漂流瓶</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        h1 {
+            color: #3f51b5; /* 深蓝色标题 */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff; /* 白色背景 */
+            border-radius: 10px;
+        }
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 12px;
+        }
+        th {
+            background-color: #3f51b5; /* 深蓝色背景 */
+            color: white;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* 淡灰色背景 */
+        }
+        tr:hover {
+            background-color: #e0e0e0; /* 淡灰色背景 */
+        }
+        .clear-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff0000; /* 红色背景 */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .clear-button:hover {
+            background-color: #cc0000; /* 深红色背景 */
+        }
+    </style>
+</head>
+<body>
+    <h1>拾取到的漂流瓶</h1>
+    <a href="{{ url_for('clear_found_bottles') }}" class="clear-button">清空漂流瓶列表</a>
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>漂流瓶内容</th>
+                <th>拾取时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bottle in bottles %}
+                <tr>
+                    <td>{{ bottle[0] }}</td>
+                    <td>{{ bottle[1][0] }}</td>
+                    <td>{{ bottle[1][1] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+

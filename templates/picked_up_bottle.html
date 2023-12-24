@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漂流瓶</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #008CBA;
+            margin-bottom: 20px;
+        }
+        .envelope {
+            margin-bottom: 20px;
+        }
+        .message-content {
+            display: none;
+            text-align: left;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #008CBA;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #005f75;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+        }
+        button.single-btn {
+            background-color: #f44336;
+            margin-left: 10px;
+        }
+        .discard-message {
+            color: #f44336;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>漂流瓶</h1>
+        <div class="envelope">
+            <button onclick="openEnvelope()">打开信封</button>
+            <button class="single-btn" onclick="discardBottle()">舍弃/重新拾取</button>
+        </div>
+        <div class="message-content" id="messageContent">
+            <p><strong>发送者昵称:</strong> {{ sender_nickname }}</p>
+            <p><strong>发送时间:</strong> {{ created_at }}</p>
+            <p><strong>漂流瓶内容:</strong> {{ message }}</p>
+        </div>
+        <div class="btn-group" style="display: none;">
+            <button class="single-btn" onclick="discardBottle()">再拾取一个新的信封</button>
+        </div>
+        <div id="discardMessage" class="discard-message"></div>
+    </div>
+
+    <script>
+        var originalContent = document.querySelector('.container').innerHTML;
+
+        function openEnvelope() {
+            var envelope = document.querySelector('.envelope');
+            var messageContent = document.getElementById('messageContent');
+            var btnGroup = document.querySelector('.btn-group');
+            envelope.style.display = 'none';
+            messageContent.style.display = 'block';
+            var discardButtons = document.querySelectorAll('.single-btn');
+            for (var i = 0; i < discardButtons.length; i++) {
+                discardButtons[i].style.display = 'block';
+            }
+            btnGroup.style.display = 'flex';
+        }
+
+        function discardBottle() {
+            var discardMessage = document.getElementById('discardMessage');
+            discardMessage.innerHTML = "漂流瓶已舍弃，可以重新拾取下一个！";
+            setTimeout(function() {
+                discardMessage.innerHTML = "";
+                location.reload(); // 刷新当前页面，模拟重新拾取新的信封
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
+
