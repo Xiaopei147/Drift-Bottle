@@ -21,6 +21,19 @@
 - `templates`文件夹: 存放HTML模板文件。
 - `avatar`文件夹: 用于存放用户上传的头像。
 - 其他静态文件：包括CSS文件等。
+        3.1 templates文件夹
+	templates文件夹下存放着应用的HTML模板文件，这些文件定义了网页的结构和布局，并通过Flask框架的模板引擎动态生成具体的页面内容。每个HTML文件对应一个或多个应用路由，定义了用户在浏览器中看到的界面。
+
+	在该项目中，templates文件夹中的HTML文件主要用于以下几个功能：
+
+	- 用户注册 (register.html)
+	- 用户登录 (login.html)
+	- 提交漂流瓶 (submit_bottle.html)
+	- 查看自己提交的漂流瓶 (view_bottle.html)
+	- 拾取漂流瓶后显示的页面 (picked_up_bottle.html)
+	- 查看拾取的漂流瓶 (view_found_bottle.html)
+	- 上传头像 (upload_avatar.html)
+	- 查看用户个人资料 (user_profile.html)
 
 ## 4. 功能说明
 
