@@ -6,6 +6,8 @@
 
 **Demo地址：** [plp.openshuai.top](http://plp.openshuai.top)
 
+Slogan：让漂流也成为一种生活方式！
+
 ## 2. 技术栈
 
 - **Flask框架**: 用于构建Web应用。
