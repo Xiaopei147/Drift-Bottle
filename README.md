@@ -116,17 +116,17 @@
 在项目根目录下执行以下命令：
 
 ```bash
-vim config.ini
-[database]
-host = 172.17.0.1 #数据库地址
-user = root       #数据库用户
-password = 123456 #数据库用户密码
-database = plp    #数据库名称
+一：vim config.ini
+	[database]
+	host = 172.17.0.1 #数据库地址
+	user = root       #数据库用户
+	password = 123456 #数据库用户密码
+	database = plp    #数据库名称
 
-[port]
-listen_port = 5003 #选择服务监听的本地端口
+	[port]
+	listen_port = 5003 #选择服务监听的本地端口
 
-python app.py
+二：python app.py
 ```
 
 然后访问 [http://localhost:5003](http://localhost:5003) 即可使用漂流瓶应用。
