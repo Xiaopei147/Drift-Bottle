@@ -119,8 +119,6 @@
 
 ```bash
 vim config.ini
-ini
-Copy code
 [database]
 host = 172.17.0.1     # 数据库地址
 user = root           # 数据库用户
@@ -129,10 +127,7 @@ database = plp        # 数据库名称
 
 [port]
 listen_port = 5003    # 选择服务监听的本地端口
-二：运行应用程序
-
-bash
-Copy code
+**二：运行应用程序**
 python app.py
 ```
 
