@@ -9,12 +9,24 @@ from io import BytesIO
 from PIL import Image
 import random
 import re
+import configparser
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
+# 读取配置文件
+config = configparser.ConfigParser()
+config.read('config.ini')
+
 # 连接到MySQL数据库
-db = pymysql.connect(host="172.17.0.2", user="root", password="123456", database="plp")
+db = pymysql.connect(
+    host=config['database']['host'],
+    user=config['database']['user'],
+    password=config['database']['password'],
+    database=config['database']['database'],
+    port=int(config['database']['port']),  # 添加端口配置
+    connect_timeout=3600
+)
 cursor = db.cursor()
 
 
@@ -268,4 +280,4 @@ def update_profile():
     return redirect(url_for('user_profile'))
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5003)
+    app.run(debug=True, port=int(config['app']['port']))
