@@ -127,7 +127,10 @@ database = plp        # 数据库名称
 
 [port]
 listen_port = 5003    # 选择服务监听的本地端口
+```
+
 **二：运行应用程序**
+```bash
 python app.py
 ```
 
