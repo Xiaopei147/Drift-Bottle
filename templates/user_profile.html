@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +16,7 @@
         .sidebar {
             width: 200px;
             padding: 20px;
-            background-color: #343a40; /* 侧边栏背景色调整 */
+            background-color: #3498db; /* 新颜色 */
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -31,10 +30,11 @@
             margin: 5px 0;
             border-radius: 5px;
             transition: background-color 0.3s;
+            background-color: #2980b9; /* 新颜色 */
         }
 
         .sidebar a:hover {
-            background-color: #495057;
+            background-color: #2079b0; /* 新颜色 */
         }
 
         .main-content {
@@ -45,7 +45,7 @@
 
         h2 {
             font-size: 28px;
-            color: #495057;
+            color: #2079b0; /* 新颜色 */
             margin-bottom: 20px;
         }
 
@@ -58,19 +58,22 @@
             margin-bottom: 10px;
             width: 100%;
             box-sizing: border-box;
+            border: 1px solid #3498db; /* 新颜色 */
+            border-radius: 5px;
         }
 
         input[type="submit"], input[type="button"], button {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #3498db; /* 新颜色 */
             color: #fff;
             border: none;
             cursor: pointer;
             border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
         input[type="submit"]:hover, input[type="button"]:hover, button:hover {
-            background-color: #0056b3;
+            background-color: #2980b9; /* 新颜色 */
         }
 
         img {
@@ -80,6 +83,7 @@
             position: absolute;
             top: 20px;
             right: 20px;
+            border: 4px solid #fff; /* 新颜色 */
         }
 
         .avatar-upload-form {
@@ -98,6 +102,17 @@
             position: absolute;
             right: 20px;
             bottom: 20px;
+            padding: 10px 20px;
+            background-color: #e74c3c; /* 新颜色 */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #c0392b; /* 新颜色 */
         }
 
         .flashes {
@@ -113,11 +128,19 @@
         /* 当对应板块为激活状态时显示 */
         .profile.active, .password.active, .avatar.active {
             display: block;
+            animation: fadeIn 0.5s ease-in-out; /* 新增淡入动画效果 */
+        }
+
+        /* 新增淡入动画的关键帧 */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
 <body>
     <div class="sidebar">
+        <a href="https://plp.openshuai.top/" class="home-button">返回首页</a>
         <a href="#" onclick="showContent('profile')">用户资料</a>
         <a href="#" onclick="showContent('password')">修改密码</a>
         <a href="#" onclick="showContent('avatar')">上传/修改头像</a>
@@ -133,7 +156,9 @@
 
         <h2 class="profile active">用户资料</h2>
         <div class="container active profile" id="profile">
-            <form method="post" action="{{ url_for('update_profile') }}">
+            <form method="post" action
+
+="{{ url_for('update_profile') }}">
                 <p>用户名: {{ user.username }}</p>
                 <p>邮箱: <input type="text" name="email" value="{{ user.email }}"></p>
                 <p>昵称: <input type="text" name="nickname" value="{{ user.nickname }}"></p>
@@ -191,4 +216,3 @@
     </script>
 </body>
 </html>
-

@@ -1,38 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>漂流瓶社区</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #2c3e50; /* 背景颜色调整 */
+            color: #ecf0f1; /* 文字颜色调整 */
         }
         h1 {
-            text-align: center;
-            color: #008CBA;
+            color: #3498db; /* 标题颜色调整 */
+            margin-bottom: 30px;
         }
         ul {
             list-style-type: none;
             padding: 0;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 20px;
+            gap: 20px;
         }
         li {
-            margin: 0 10px;
+            margin: 10px;
         }
         a {
             text-decoration: none;
-            color: #008CBA;
+            color: #fff; /* 链接文字颜色 */
             font-weight: bold;
-            transition: color 0.3s ease;
+            background-color: #3498db; /* 链接背景颜色 */
+            padding: 15px 30px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
         }
         a:hover {
-            color: #005f7f;
+            background-color: #2980b9; /* 悬停时背景颜色调整 */
         }
         p {
             text-align: center;
+            font-size: 18px;
+            margin-top: auto; /* 将底部文本放置到最底部 */
         }
     </style>
     <script>
@@ -44,7 +60,7 @@
                     this.style.color = '#ff6600';
                 });
                 link.addEventListener('mouseout', function() {
-                    this.style.color = '#008CBA';
+                    this.style.color = '#fff';
                 });
             });
         });

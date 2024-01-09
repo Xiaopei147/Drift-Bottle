@@ -1,21 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>用户注册</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            padding-top: 100px;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #3498db, #9b59b6); /* 渐变背景色 */
+            color: #ecf0f1; /* 文字颜色调整 */
+        }
+        h2 {
+            color: #3498db; /* 标题颜色调整 */
+            margin-bottom: 30px;
         }
         form {
-            max-width: 300px;
-            margin: 0 auto;
-            background-color: #f2f2f2;
+            width: 100%;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
             padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px 0px #000000;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
         }
         input[type="text"],
         input[type="password"],
@@ -24,7 +37,7 @@
             padding: 10px;
             margin: 10px 0;
             box-sizing: border-box;
-            border: 1px solid #ccc;
+            border: 1px solid #3498db; /* 输入框边框颜色调整 */
             border-radius: 5px;
         }
         input[type="submit"] {
@@ -34,18 +47,20 @@
             box-sizing: border-box;
             border: none;
             border-radius: 5px;
-            background-color: #008CBA;
+            background: linear-gradient(135deg, #3498db, #2980b9); /* 提交按钮渐变背景色 */
             color: white;
             cursor: pointer;
         }
         input[type="submit"]:hover {
-            background-color: #004C6D;
+            background: linear-gradient(135deg, #2980b9, #1c6fa8); /* 提交按钮悬停时背景渐变色 */
         }
         .login-link {
             margin-top: 10px;
             text-decoration: none;
-            color: #008CBA;
+            color: #3498db; /* 登陆链接颜色调整 */
             display: block;
+            text-align: center;
+            font-size: 14px;
         }
     </style>
 </head>

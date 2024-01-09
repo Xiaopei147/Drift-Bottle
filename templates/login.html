@@ -1,72 +1,103 @@
 <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>用户登录</title>
+    <title>Drift-Bottle漂流瓶 用户登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #3498db, #9b59b6); /* 渐变背景色 */
             text-align: center;
-            padding-top: 100px;
+            padding-top: 150px;
+            margin: 0;
+            color: #ecf0f1; /* 文字颜色调整 */
         }
         form {
-            max-width: 300px;
+            max-width: 400px;
             margin: 0 auto;
             background-color: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px 0px #000000;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px 0px #000000;
         }
         input[type="text"],
         input[type="password"] {
             width: 100%;
-            padding: 10px;
+            padding: 15px;
             margin: 10px 0;
             box-sizing: border-box;
-            border: 1px solid #ccc;
+            border: 2px solid #3498db;
             border-radius: 5px;
+            outline: none;
         }
         input[type="submit"],
         input[type="button"] {
             width: 100%;
-            padding: 10px;
+            padding: 15px;
             margin: 10px 0;
             box-sizing: border-box;
             border: none;
             border-radius: 5px;
-            background-color: #4CAF50;
+            background: linear-gradient(135deg, #2ecc71, #27ae60); /* 渐变背景色 */
             color: white;
             cursor: pointer;
+            font-size: 16px;
         }
         input[type="submit"]:hover,
         input[type="button"]:hover {
-            background-color: #45a049;
+            background: linear-gradient(135deg, #27ae60, #1c6fa8); /* 悬停时渐变色 */
         }
         .register-btn {
             display: block;
             width: 100%;
-            padding: 10px;
+            padding: 15px;
             margin: 10px 0;
             box-sizing: border-box;
             border: none;
             border-radius: 5px;
-            background-color: #008CBA;
+            background: linear-gradient(135deg, #e74c3c, #c0392b); /* 渐变背景色 */
             color: white;
             cursor: pointer;
+            font-size: 16px;
             text-decoration: none;
         }
         .register-btn:hover {
-            background-color: #004C6D;
+            background: linear-gradient(135deg, #c0392b, #e74c3c); /* 悬停时渐变色 */
+        }
+        h2 {
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        .project-name {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        .project-names {
+            color: #D1C667;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 600px) {
+            form {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <h2>用户登录</h2>
     <form method="post" action="/login">
+        <div class="project-name">Drift-Bottle漂流瓶 用户登录</div>
+        <div class="project-names">Slogan：让漂流也成为一种生活方式</div>
+        <h2>欢迎回来！</h2>
         <input type="text" name="username" placeholder="用户名" required><br>
         <input type="password" name="password" placeholder="密码" required><br>
         <input type="submit" value="登录">
-        <a href="/register" class="register-btn">注册</a>
+        <a href="/register" class="register-btn">立即注册</a>
     </form>
 </body>
 </html>
+
