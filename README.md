@@ -102,6 +102,7 @@
 ![漂流瓶首页](screenshots/project_index.jpg)
 ![漂流瓶拾取页面1](screenshots/bottle_one.jpg)
 ![漂流瓶拾取页面2](screenshots/bottle_two.jpg)
+![漂流瓶拾取页面3](screenshots/bottle_there.jpg)
 
 ## 5. 数据库结构
 
@@ -144,6 +145,7 @@ python app.py
 ## 8. 后续改进计划
 
 - 前端界面美化和交互优化。
+  - 2024/01/09 更新第一版UI。
 - 安全性增强，如密码加密存储。
 - 日志记录和错误处理的完善。
 - 性能优化，如数据库连接池的使用。
