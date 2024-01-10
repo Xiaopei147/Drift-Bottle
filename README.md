@@ -103,6 +103,7 @@
 ![漂流瓶拾取页面1](screenshots/bottle_one.jpg)
 ![漂流瓶拾取页面2](screenshots/bottle_two.jpg)
 ![漂流瓶拾取页面3](screenshots/bottle_there.jpg)
+![漂流瓶拾取页面4](screenshots/bottle_four.jpg)
 
 ## 5. 数据库结构
 
