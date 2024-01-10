@@ -162,13 +162,22 @@ def view_bottle():
 @app.route('/view_found_bottle')
 def view_found_bottle():
     finder_id = session.get('user_id')
-    cursor.execute("SELECT b.message, b.created_at FROM bottle_picks bp JOIN bottles b ON bp.bottle_id = b.id WHERE bp.user_id = %s", (finder_id,))
+    #拾取过的漂流瓶列表显示投放者邮箱(结合下面使用，同时结合html文件)
+    #cursor.execute("SELECT b.message, b.created_at, u.nickname, u.email FROM bottle_picks bp JOIN bottles b ON bp.bottle_id = b.id JOIN users u ON b.sender_id = u.id WHERE bp.user_id = %s", (finder_id,))
+    #拾取过的漂流瓶列表不显示投者者邮箱(结合下面使用，同时结合html文件)
+    cursor.execute("SELECT b.message, b.created_at, u.nickname FROM bottle_picks bp JOIN bottles b ON bp.bottle_id = b.id JOIN users u ON b.sender_id = u.id WHERE bp.user_id = %s",(finder_id,))
+
     found_bottles = cursor.fetchall()
 
-    # 在这里为漂流瓶列表添加序号
-    processed_found_bottles = [(index + 1, bottle) for index, bottle in enumerate(found_bottles)]
-
+    # 在这里为漂流瓶列表添加序号和用户名
+    # 拾取过的漂流瓶列表显示投放者邮箱(结合上面使用,同时结合html文件)
+    #processed_found_bottles = [(index + 1, bottle[2], bottle[0], bottle[1], bottle[3]) for index, bottle in enumerate(found_bottles)]
+    # 拾取过的漂流瓶列表不显示投者者邮箱(结合上面使用，同时结合html文件)
+    processed_found_bottles = [(index + 1, bottle[2], bottle[0], bottle[1]) for index, bottle in enumerate(found_bottles)]
     return render_template('view_found_bottle.html', bottles=processed_found_bottles)
+
+
+
 
 #清空拾取的漂流瓶列表
 @app.route('/clear_found_bottles')
