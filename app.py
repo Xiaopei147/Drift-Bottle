@@ -10,6 +10,8 @@ from PIL import Image
 import random
 import re
 import configparser
+import hashlib
+from flask import jsonify
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -42,7 +44,11 @@ def register():
         username = request.form['username']
         password = request.form['password']
         email = request.form['email']
-        cursor.execute("INSERT INTO users (username, password, email) VALUES (%s, %s, %s)", (username, password, email))
+
+        # 使用哈希算法对密码进行加密
+        hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
+
+        cursor.execute("INSERT INTO users (username, password, email) VALUES (%s, %s, %s)", (username, hashed_password, email))
         db.commit()
         return redirect(url_for('login'))
     return render_template('register.html')
@@ -74,11 +80,18 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        cursor.execute("SELECT id FROM users WHERE username = %s AND password = %s", (username, password))
+
+        # 使用哈希算法对密码进行加密
+        hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
+
+        cursor.execute("SELECT id FROM users WHERE username = %s AND password = %s", (username, hashed_password))
         user = cursor.fetchone()
         if user:
             session['user_id'] = user[0]
             return redirect(url_for('submit_bottle'))
+        else:
+            flash('用户名或密码错误', 'error')
+
     return render_template('login.html')
 
 #注销功能
@@ -252,6 +265,8 @@ def user_profile():
         # 如果 user_info 为 None，可以根据实际情况返回错误页面或者其他处理方式
         return "用户信息不存在或者出现错误"
 
+from flask import jsonify
+
 # 修改密码功能
 @app.route('/change_password', methods=['POST'])
 def change_password():
@@ -260,24 +275,29 @@ def change_password():
     new_password = request.form['new_password']
     confirm_password = request.form['confirm_password']
 
-    # 从数据库中获取用户的旧密码
+    # 从数据库中获取用户的哈希密码
     cursor.execute("SELECT password FROM users WHERE id = %s", (user_id,))
-    stored_password = cursor.fetchone()[0]
+    stored_hashed_password = cursor.fetchone()[0]
 
     if new_password != confirm_password:
         flash('新密码和确认密码不一致', 'error')
-        return redirect(url_for('user_profile'))
+        return jsonify(success=False, message='新密码和确认密码不一致')
 
-    if old_password != stored_password:
+    if hashlib.sha256(old_password.encode('utf-8')).hexdigest() != stored_hashed_password:
         flash('旧密码不正确', 'error')
-        return redirect(url_for('user_profile'))
+        return jsonify(success=False, message='旧密码不正确')
 
-    # 更新用户密码
-    cursor.execute("UPDATE users SET password = %s WHERE id = %s", (new_password, user_id))
+    # 使用哈希算法更新用户密码
+    hashed_new_password = hashlib.sha256(new_password.encode('utf-8')).hexdigest()
+    cursor.execute("UPDATE users SET password = %s WHERE id = %s", (hashed_new_password, user_id))
     db.commit()
     flash('密码修改成功', 'success')
-    return redirect(url_for('user_profile'))
 
+    # 密码修改成功后直接跳转到注销路由
+    return redirect(url_for('logout'))
+
+
+    return jsonify(success=True, message='密码修改成功')
 
 @app.route('/update_profile', methods=['POST'])
 def update_profile():

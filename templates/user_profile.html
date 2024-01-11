@@ -175,9 +175,22 @@
                 <p>确认密码: <input type="password" name="confirm_password" id="confirmPassword" required></p>
                 <input type="submit" value="修改密码" onclick="return validatePasswords()">
             </form>
-            <div id="passwordMessage" class="flashes"></div>
+            <!-- 提示信息 -->
+            <div id="passwordMessage" class="flashes">
+                {% if 'password_changed' in request.args and request.args['password_changed'] == 'true' %}
+                    <p class="success">密码修改成功</p>
+                {% elif 'password_changed' in request.args and request.args['password_changed'] == 'false' %}
+                    <p class="error">密码修改失败</p>
+                {% endif %}
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <p class="error">{{ messages[0] }}</p>
+                    {% endif %}
+                {% endwith %}
+            </div>
             <button onclick="location.href='/logout'" class="logout-button">注销/退出登录</button>
         </div>
+
 
         <div class="container avatar" id="avatar">
             <h2>上传/修改头像</h2>
